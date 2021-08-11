@@ -20,16 +20,14 @@ module PG_B(iRST,
             3'b111:{Da, Db, oP} = 3'bxxx;
         endcase
     
-    D_FF
-    U0(
+    D_FF U0(
     .iRST(iRST),
     .iCLK(iCLK),
     .iD(Da),
     .oQ(a)
     );
     
-    D_FF
-    U1(
+    D_FF U1(
     .iRST(iRST),
     .iCLK(iCLK),
     .iD(Db),
@@ -37,4 +35,4 @@ module PG_B(iRST,
     );
     
 endmodule
-
+    

@@ -11,18 +11,23 @@ module BASE_S(iRSTn,
     assign Da = (a|(iBASE&b))&iRESET;
     assign Db = ((~iBASE&b)|(iBASE&~b)|(a&b))&iRESET;
     
-    D_FF U0(.iRSTn(iRSTn),
+    D_FF U0(
+    .iRSTn(iRSTn),
     .iCLK(iCLK),
     .iD(Da),
-    .oQ(a));
-    D_FF U1(.iRSTn(iRSTn),
+    .oQ(a)
+    );
+    
+    D_FF U1(
+    .iRSTn(iRSTn),
     .iCLK(iCLK),
     .iD(Db),
-    .oQ(b));
+    .oQ(b)
+    );
     
     assign oBASE[2] = a&b;
     assign oBASE[1] = a;
     assign oBASE[0] = a|b;
     
 endmodule
-
+    

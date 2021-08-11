@@ -11,17 +11,22 @@ module STRIKE_S(iRSTn,
     assign Da = ((~iSTRIKE&a)|(iSTRIKE&b))&iRESET;
     assign Db = ((iSTRIKE&~a&~b)|(~iSTRIKE&b))&iRESET;
     
-    D_FF U0(.iRSTn(iRSTn),
+    D_FF U0(
+    .iRSTn(iRSTn),
     .iCLK(iCLK),
     .iD(Da),
-    .oQ(a));
-    D_FF U1(.iRSTn(iRSTn),
+    .oQ(a)
+    );
+    
+    D_FF U1(
+    .iRSTn(iRSTn),
     .iCLK(iCLK),
     .iD(Db),
-    .oQ(b));
-
+    .oQ(b)
+    );
+    
     assign oSTRIKE[1] = a;
     assign oSTRIKE[0] = a|b;
     
 endmodule
-
+    
