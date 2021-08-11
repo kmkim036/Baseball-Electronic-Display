@@ -77,11 +77,11 @@ module BASEBALL_S(iRSTn,
     .oBASE(o_BASE)
     );
     
-    assign BALL_3      = (o_BALL == 3'b111) ? 1'b1 : 1'b0;
+    assign BALL_3      = (o_BALL == 3'b111) ? 1'b1: 1'b0;
     assign BALL_4      = BALL_3 & i_BALL;
-    assign STRIKE_2    = (o_STRIKE == 2'b11) ? 1'b1 : 1'b0;
+    assign STRIKE_2    = (o_STRIKE == 2'b11) ? 1'b1: 1'b0;
     assign STRIKE_3    = STRIKE_2 & i_STRIKE;
-    assign OUT_2       = (o_OUT == 2'b11) ? 1'b1 : 1'b0;
+    assign OUT_2       = (o_OUT == 2'b11) ? 1'b1: 1'b0;
     assign OUT_3       = OUT_2 & (i_OUT | STRIKE_3);
     assign OUT_C       = STRIKE_3 | i_OUT;
     assign BASE_C      = BALL_4 | i_HIT;
