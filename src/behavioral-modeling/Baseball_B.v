@@ -56,7 +56,7 @@ module Baseball_B(iCLK,
             o_BALL <= 4'b0000;
         else if (~i_BALL)
         begin
-            if (o_STRIKE[2] | o_BALL[3]|i_HIT|i_OUT)
+            if (o_STRIKE[2] | o_BALL[3] | i_HIT | i_OUT)
                 o_BALL <= 4'b0000;
             else
                 o_BALL <= o_BALL;
@@ -76,7 +76,7 @@ module Baseball_B(iCLK,
             o_STRIKE <= 3'b000;
         else if (~i_STRIKE)
         begin
-            if (o_STRIKE[2] | o_BALL[3]|i_HIT|i_OUT)
+            if (o_STRIKE[2] | o_BALL[3] | i_HIT | i_OUT)
                 o_STRIKE <= 3'b000;
             else
                 o_STRIKE <= o_STRIKE;

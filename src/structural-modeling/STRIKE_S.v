@@ -6,10 +6,10 @@ module STRIKE_S(iRSTn,
     
     input iRSTn, iCLK, iSTRIKE, iRESET;
     output [1:0] oSTRIKE;
-    wire a,b,Da,Db;
+    wire a, b, Da, Db;
     
-    assign Da = ((~iSTRIKE&a)|(iSTRIKE&b))&iRESET;
-    assign Db = ((iSTRIKE&~a&~b)|(~iSTRIKE&b))&iRESET;
+    assign Da = ((~iSTRIKE & a) | (iSTRIKE & b)) & iRESET;
+    assign Db = ((iSTRIKE & ~a & ~b) | (~iSTRIKE & b)) & iRESET;
     
     D_FF U0(
     .iRSTn(iRSTn),
@@ -26,7 +26,7 @@ module STRIKE_S(iRSTn,
     );
     
     assign oSTRIKE[1] = a;
-    assign oSTRIKE[0] = a|b;
+    assign oSTRIKE[0] = a | b;
     
 endmodule
     

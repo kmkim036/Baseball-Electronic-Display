@@ -9,13 +9,13 @@ module BASEBALL_S(iRSTn,
                   oOUT_LED,
                   oBASE);
     
-    input iRSTn,iCLK,iSTRIKE,iBALL,iHIT_OUT,iHIT;
-    output [2:0] oBALL_LED,oBASE;
-    output [1:0] oSTRIKE_LED,oOUT_LED;
+    input iRSTn, iCLK, iSTRIKE, iBALL, iHIT_OUT, iHIT;
+    output [2:0] oBALL_LED, oBASE;
+    output [1:0] oSTRIKE_LED, oOUT_LED;
     wire i_STRIKE, i_BALL, i_OUT, i_HIT;
     wire [2:0] o_BALL, o_BASE;
     wire [1:0] o_STRIKE, o_OUT;
-    wire BALL_3, BALL_4, STRIKE_2,STRIKE_3,OUT_2, OUT_3, OUT_C, BASE_C,RESET_SB, RESET_OB;
+    wire BALL_3, BALL_4, STRIKE_2, STRIKE_3, OUT_2, OUT_3, OUT_C, BASE_C, RESET_SB, RESET_OB;
     
     PG_S U0(
     .iRSTn(iRSTn),
@@ -77,15 +77,15 @@ module BASEBALL_S(iRSTn,
     .oBASE(o_BASE)
     );
     
-    assign BALL_3      = (o_BALL == 3'b111)?1'b1:1'b0;
-    assign BALL_4      = BALL_3&i_BALL;
-    assign STRIKE_2    = (o_STRIKE == 2'b11)?1'b1:1'b0;
-    assign STRIKE_3    = STRIKE_2&i_STRIKE;
-    assign OUT_2       = (o_OUT == 2'b11)?1'b1:1'b0;
-    assign OUT_3       = OUT_2&(i_OUT | STRIKE_3);
-    assign OUT_C       = STRIKE_3|i_OUT;
-    assign BASE_C      = BALL_4|i_HIT;
-    assign RESET_SB    = BALL_4|STRIKE_3|i_HIT|i_OUT;
+    assign BALL_3      = (o_BALL == 3'b111) ? 1'b1 : 1'b0;
+    assign BALL_4      = BALL_3 & i_BALL;
+    assign STRIKE_2    = (o_STRIKE == 2'b11) ? 1'b1 : 1'b0;
+    assign STRIKE_3    = STRIKE_2 & i_STRIKE;
+    assign OUT_2       = (o_OUT == 2'b11) ? 1'b1 : 1'b0;
+    assign OUT_3       = OUT_2 & (i_OUT | STRIKE_3);
+    assign OUT_C       = STRIKE_3 | i_OUT;
+    assign BASE_C      = BALL_4 | i_HIT;
+    assign RESET_SB    = BALL_4 | STRIKE_3 | i_HIT | i_OUT;
     assign RESET_OB    = OUT_3;
     assign oSTRIKE_LED = o_STRIKE;
     assign oBALL_LED   = o_BALL;

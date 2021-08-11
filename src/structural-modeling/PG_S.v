@@ -3,12 +3,12 @@ module PG_S(iRSTn,
             iX,
             oY);
     
-    input iRSTn,iCLK,iX;
+    input iRSTn, iCLK, iX;
     output oY;
-    wire Da,Db,a,b;
+    wire Da, Db, a, b;
     
-    assign Da = (b&~iX)|(a&~iX);
-    assign Db = (~a)&(~b)&~iX;
+    assign Da = (b & ~iX) | (a & ~iX);
+    assign Db = (~a) & (~b) & (~iX);
     
     D_FF U0(
     .iRSTn(iRSTn),

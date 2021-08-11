@@ -6,10 +6,10 @@ module OUT_S(iRSTn,
     
     input iRSTn, iCLK, iOUT, iRESET;
     output [1:0] oOUT;
-    wire a,b,Da,Db;
+    wire a, b, Da, Db;
     
-    assign Da = ((~iOUT&a)|(iOUT&b))&iRESET;
-    assign Db = ((iOUT&~a&~b)|(~iOUT&b))&iRESET;
+    assign Da = ((~iOUT & a) | (iOUT & b)) & iRESET;
+    assign Db = ((iOUT & ~a & ~b) | (~iOUT & b)) & iRESET;
     
     D_FF U0(
     .iRSTn(iRSTn),
@@ -26,7 +26,7 @@ module OUT_S(iRSTn,
     );
     
     assign oOUT[1] = a;
-    assign oOUT[0] = a|b;
+    assign oOUT[0] = a | b;
     
 endmodule
     
